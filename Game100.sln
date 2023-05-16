@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Game100", "Game100\Game100.csproj", "{67140535-5329-4FBD-B29A-36D2ECB33E02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game100Classes", "Game100Classes\Game100Classes.csproj", "{DFA7646D-22BD-43BA-BB3D-8D0248075433}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67140535-5329-4FBD-B29A-36D2ECB33E02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67140535-5329-4FBD-B29A-36D2ECB33E02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67140535-5329-4FBD-B29A-36D2ECB33E02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67140535-5329-4FBD-B29A-36D2ECB33E02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFA7646D-22BD-43BA-BB3D-8D0248075433}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFA7646D-22BD-43BA-BB3D-8D0248075433}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFA7646D-22BD-43BA-BB3D-8D0248075433}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFA7646D-22BD-43BA-BB3D-8D0248075433}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {31B388E3-D5AA-4ACA-AB20-65B9001B9C28}
+	EndGlobalSection
+EndGlobal
