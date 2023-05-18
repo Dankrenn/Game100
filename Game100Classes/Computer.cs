@@ -8,18 +8,23 @@ namespace Game100Classes
 {
     public class Computer : Player
     {
-        public int m;
+        private int _move;
         public Computer()
         {
 
         }
 
-        public Computer(int m)
+        public void MoveUpdate(int move)
         {
-            this.m = m;
+            this._move = move;
         }
 
-        public int M(int n, int chek, int count)
+        public int MoveReturn()
+        {
+            return this._move;
+        }
+
+        public int SearchMove(int n, int chek, int count)
         {
             int m = 0;
             if (chek == 0)
@@ -37,66 +42,41 @@ namespace Game100Classes
                     m = 9;
                 }
             }
-            else if (chek > 0 && count < 79)
+            else
             {
-                if (n >= 1 && n <= 9)
+                if (count <= 79)
                 {
-                    m = 10 - n;
-                }
-                if (n == 10)
-                {
-                    m = 10;
-                }
-            }
-            else if (chek > 0 && count == 79)
-            {
-                if (n >= 1 && n <= 9)
-                {
-                    m = 10 - n;
-                }
-                if (n == 10)
-                {
-                    m = 1;
-                }
-            }
-            else if (chek > 0 && count > 79 && count <= 89)
-            {
-                if (n >= 1 && n <= 9)
-                {
-                    m = 10 - n;
-                }
-                else
-                {
-                    m = 1;
-                    // not
-                }
-            }
-            else if (count > 89)
-            {
-                if (count - n != 90)
-                {
-                    if (n >= 1 && n <= 10)
+                    if (n >= 1 && n <= 9)
                     {
-                        m = 11 - n;
+                        m = 10 - n;
                     }
-                    else
+                    if (n == 10)
                     {
-                        m = 1;
-                        // not
+                        m = 10;
                     }
-                }
-                else
+                }              
+                if (count > 79 && count <= 89)
                 {
-                    if (n >= 1 && n <= 10)
+                    if (n >= 1 && n <= 9)
                     {
                         m = 10 - n;
                     }
                     else
                     {
                         m = 1;
-                        // not
                     }
                 }
+                if (count > 89)
+                {
+                    if (n != 1)
+                    {
+                        m = 11 - n;
+                    }
+                    else
+                    {
+                        m = 10;
+                    }
+                }               
             }
             return m;
         }

@@ -6,37 +6,45 @@ using System.Threading.Tasks;
 
 namespace Game100Classes
 {
-    public class Player : Game
+    public class Player 
     {
-        public string name {get;set;}
-        public string value  { get;set;}
-        public int n { get; set; }
+        private string _name;
+        private int _move;
         public Player() 
         {
         
-        }
-        public Player(string name,string value)
+        }       
+
+        public  void NameUpdate(string name)
         {
-            this.name = name;
-            this.value = value;
-        }
-        public  string Name(string name)
-        {
-            return name;
-        }
-        public  string Value(string value)
-        {
-            return value;
+            this._name = name;
         }
 
-        public  int ValueConvert(string value)
+        public string NameReturn()
+        {
+           return this._name;
+        }
+
+        public void MoveUpdate(string value)
+        {
+
+            this._move = ValueConvert(value);
+        }
+
+        public int MoveReturn()
+        {
+           return this._move;
+        }
+
+        private  int ValueConvert(string value)
         {
             int n = int.Parse(value);
             return n;
         }
-        public  bool Validation_value(int n)
+
+        public  bool Validation_value(string value)
         {
-            
+            int n =  ValueConvert(value);
             if (n >= 1 && n <= 10)
             {
                 return true;
@@ -46,12 +54,5 @@ namespace Game100Classes
                 return false;
             }
         }
-
-      
-
-
-
-
-
     }
 }

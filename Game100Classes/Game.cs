@@ -8,20 +8,31 @@ namespace Game100Classes
 {
     public class Game
     {
-        public int count;
-        public int schet;
-        public int chek;
+        private int _count;
+        private int _chek;
 
         public Game()
         {
 
         }
-
-        public Game(int count, int schet, int chek)
+        public void ChekApp()
         {
-            this.count = count;
-            this.schet = schet;
-            this.chek = chek;
+            this._chek++;
+        }
+
+        public int ChekReturn()
+        {
+            return this._chek;
+        }
+
+        public void CountUpdate(int n)
+        {
+            this._count += n;
+        }
+
+        public int CountReturn()
+        {
+            return this._count;
         }
 
         public  bool CountWins(int count)
@@ -34,12 +45,6 @@ namespace Game100Classes
             {
                 return false;
             }
-        }
-        
-        public  int CountN(int n, ref int count)
-        {
-            count += n;
-            return count;
         }
     }
 }

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Game100", "Game100\Game100.csproj", "{67140535-5329-4FBD-B29A-36D2ECB33E02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Game100Concole", "Game100\Game100Concole.csproj", "{67140535-5329-4FBD-B29A-36D2ECB33E02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game100Classes", "Game100Classes\Game100Classes.csproj", "{DFA7646D-22BD-43BA-BB3D-8D0248075433}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game100", "Game100Classes\Game100.csproj", "{DFA7646D-22BD-43BA-BB3D-8D0248075433}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
