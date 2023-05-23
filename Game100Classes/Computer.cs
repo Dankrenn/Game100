@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Game100Classes
 {
-    public class Computer : Player
+    abstract class Computer : Player
     {
         private int _move;
         public Computer()

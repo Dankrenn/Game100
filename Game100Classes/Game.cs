@@ -15,6 +15,7 @@ namespace Game100Classes
         {
 
         }
+
         public void ChekApp()
         {
             this._chek++;
@@ -45,6 +46,35 @@ namespace Game100Classes
             {
                 return false;
             }
+        }
+        public  int ValueConvert(string value)
+        {
+            int n = int.Parse(value);
+            return n;
+        }
+
+        public bool ValidationValue(string value)
+        {
+            int n = ValueConvert(value);
+            if (n >= 1 && n <= 10)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool MoveOrder()
+        {
+            Random rand = new Random();
+            int result = rand.Next(0, 2);
+            if(result == 0)
+            {
+                return true;
+            }
+            else return false;
         }
     }
 }
