@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Game100Concole", "Game100\G
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game100", "Game100Classes\Game100.csproj", "{DFA7646D-22BD-43BA-BB3D-8D0248075433}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game100WinForms", "Game100WinForms\Game100WinForms.csproj", "{844E7B91-A6F3-4FD7-B8F7-50D711A0AC2F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DFA7646D-22BD-43BA-BB3D-8D0248075433}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFA7646D-22BD-43BA-BB3D-8D0248075433}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFA7646D-22BD-43BA-BB3D-8D0248075433}.Release|Any CPU.Build.0 = Release|Any CPU
+		{844E7B91-A6F3-4FD7-B8F7-50D711A0AC2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{844E7B91-A6F3-4FD7-B8F7-50D711A0AC2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{844E7B91-A6F3-4FD7-B8F7-50D711A0AC2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{844E7B91-A6F3-4FD7-B8F7-50D711A0AC2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

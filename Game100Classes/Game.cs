@@ -16,6 +16,14 @@ namespace Game100Classes
 
         }
 
+       public bool PlayerNameValid(string name1,string name2)
+        {
+            if ((name1 == name2) || name1 == "" || name2 == "")
+            {
+                return false;
+            }
+            return true;
+        }
         public void ChekApp()
         {
             this._chek++;
@@ -36,9 +44,9 @@ namespace Game100Classes
             return this._count;
         }
 
-        public  bool CountWins(int count)
+        public  bool CountWins()
         {
-            if (count == 100)
+            if (this._count == 100)
             {
                 return true;
             }
@@ -74,7 +82,16 @@ namespace Game100Classes
             {
                 return true;
             }
-            else return false;
+            else
+            {
+                return false;
+            }
+        }
+
+        public int MoveComputer(Computer computer1,Player player1)
+        {
+            computer1.AdvancedValue(player1.ResultingValueReturn());
+            return computer1.ResultingValue(this.ChekReturn(), this.CountReturn());
         }
     }
 }

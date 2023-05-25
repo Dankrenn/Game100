@@ -6,28 +6,33 @@ using System.Threading.Tasks;
 
 namespace Game100Classes
 {
-    abstract class Computer : Player
+    public class Computer : IPlayer
     {
-        private int _move;
+        private int _advanced_value;//Полученаемое от игрока  значение ,которое он обрабатывает 
+        private int _resulting_value;//Передаваемое  другому игроку значение которое он выбирает 
+
         public Computer()
         {
 
         }
 
-        public void MoveUpdate(int move)
+        // метод для записи получаемого от сорерника значения
+        public void AdvancedValue(int _advanced_value_playergame) 
         {
-            this._move = move;
+            this._advanced_value = _advanced_value_playergame;
         }
 
-        public int MoveReturn()
-        {
-            return this._move;
-        }
-
-        public int SearchMove(int n, int chek, int count)
+        // ПК Метод созданный для  записи  значения которое мы передадим другому игроку
+        public  int  ResultingValue(int chek, int count)
         {
             int m = 0;
-            if (chek == 0)
+            int n = this._advanced_value;
+            if (n == 0)
+            {
+                m = 9;
+                return this._resulting_value = m;
+            }
+            if (chek == 1)
             {
                 if (n >= 1 && n <= 8)
                 {
@@ -41,45 +46,54 @@ namespace Game100Classes
                 {
                     m = 9;
                 }
+                return this._resulting_value = m;
+            }
+            if (count <= 79)
+            {
+                if (n >= 1 && n <= 9)
+                {
+                    m = 10 - n;
+                }
+                if (n == 10)
+                {
+                    m = 10;
+                }
+                return this._resulting_value = m;
+            }
+            if (count > 79 && count <= 89)
+            {
+                if (n >= 1 && n <= 9)
+                {
+                    m = 10 - n;
+                }
+                else
+                {
+                    m = 1;
+                }
+                return this._resulting_value = m;
+            }
+            if (count > 89)
+            {
+                if (n != 1)
+                {
+                    m = 11 - n;
+                }
+                else
+                {
+                    m = 10;
+                }
+                return this._resulting_value = m;
             }
             else
             {
-                if (count <= 79)
-                {
-                    if (n >= 1 && n <= 9)
-                    {
-                        m = 10 - n;
-                    }
-                    if (n == 10)
-                    {
-                        m = 10;
-                    }
-                }              
-                if (count > 79 && count <= 89)
-                {
-                    if (n >= 1 && n <= 9)
-                    {
-                        m = 10 - n;
-                    }
-                    else
-                    {
-                        m = 1;
-                    }
-                }
-                if (count > 89)
-                {
-                    if (n != 1)
-                    {
-                        m = 11 - n;
-                    }
-                    else
-                    {
-                        m = 10;
-                    }
-                }               
+                m = 0;
+                return this._resulting_value = m;
             }
-            return m;
         }
 
+        public int ResultingValueReturn()
+        {
+            return this._resulting_value;
+        }
     }
 }

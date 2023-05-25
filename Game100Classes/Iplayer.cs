@@ -9,7 +9,6 @@ namespace Game100Classes
     internal interface IPlayer
     {
         void AdvancedValue(int _advanced_value_playergame); // Метод позволяет получить значение от соперника и записать его 
-        void ResultingValue(int _resulting_value); //Метод позволяет передать значение
-
+        int ResultingValueReturn(); //Метод передающий твое значение
     }
 }
