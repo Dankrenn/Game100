@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Game100Classes
 {
-    internal interface IPlayer
+    public interface IPlayer
     {
-        void AdvancedValue(int _advanced_value_playergame); // Метод позволяет получить значение от соперника и записать его 
-        int ResultingValueReturn(); //Метод передающий твое значение
+        void NameAdd(string name);
+        string NameReturn();
+        void ResultingValue(int count);
+        int ResultingValueReturn();
     }
 }

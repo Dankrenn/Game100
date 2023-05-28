@@ -9,35 +9,35 @@ namespace Game100Classes
     public class Player : IPlayer
     {
         private string _name;
-        private int _advanced_value;//Полученаемое от игрока  значение ,которое он обрабатывает 
-        private int _resulting_value;//Передаваемое  другому игроку значение которое он выбирает 
-        public Player(string _name)
-        {
-            this._name = _name;
-        }
+        private int _advanced_value;
+        private int _resulting_value;
+
         public Player()
         {
          
         }
 
-        public void AdvancedValue(int _advanced_value_playergame) // метод для записи получаемого от сорерника значения
+        public void AdvancedValue(int _advanced_value_playergame) 
         {
             this._advanced_value = _advanced_value_playergame;
         }
-      
-        public void ResultingValue(int _resulting_value) // Метод созданный для записи  значения которое мы передадим другому игроку 
+
+        public void ResultingValue(int count)  
         {
-           this._resulting_value = _resulting_value;             
+           this._resulting_value = _advanced_value;             
         }
        
         public int ResultingValueReturn()
         {
             return this._resulting_value;
-        }
-
+        }     
         public void NameAdd(string name)
         {
-            this._name = name;
+            if(name == null)
+            {
+                throw new ArgumentNullException("Введите свое имя");
+            }        
+             this._name = name;
         }
         public string NameReturn()
         {         

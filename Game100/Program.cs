@@ -1,5 +1,6 @@
 ﻿using Game100Classes;
 using System;
+using System.ComponentModel.Design;
 using System.Net.Sockets;
 
 class Program
@@ -9,96 +10,71 @@ class Program
         try
         {
             Game game1 = new Game();
-            Computer computer1 = new Computer();
-            Player player2 = new Player();
-            Console.WriteLine("Выберете с кем вы хотите играть: \n 1 - если с компьютером \n 2 - если с игроком");
-            int choice = int.Parse(Console.ReadLine());
+            Console.WriteLine("Выберете с кем вы хотите играть: \n 0 - если с компьютером \n 1 - если с игроком");
+            game1.GameBots(Console.ReadLine());
+            game1.CreatePlayer();
             Console.WriteLine("Введите ваше имя игрок 1");
-            Player player1 = new Player(Console.ReadLine());            
-            bool b = game1.MoveOrder();
+            game1.player1.NameAdd(Console.ReadLine());
+            if(game1.GameBotsReturn() == true)
+            {
+                Console.WriteLine($"Имя игрока 2 = {game1._player.NameReturn()}") ;
+            }
+            else
+            {
+                Console.WriteLine("Введите ваше имя игрок 2");
+                game1._player.NameAdd(Console.ReadLine());
+            }
+            game1.PlayersNameValid(game1.player1);
+            game1.MoveOrder();
             while (game1.CountWins() == false)
             {
-                if(b == true)
+                if(game1.MovePlayer1Return() == true)
                 {
-                    Console.WriteLine($"Игрок {player1.NameReturn()}, выберете любое число от 1 до 10");
-                    string value = Console.ReadLine();
-                    if (game1.ValidationValue(value) != true)
-                    {
-                        Console.WriteLine("Неверный формат ,выполните перезапуск");
-                        return;
-                    }
-                    player1.ResultingValue(game1.ValueConvert(value));
-                    game1.CountUpdate(player1.ResultingValueReturn());
-                    b = false;
-                    if(choice == 2)
-                    {
-                        Console.WriteLine($"Счет  {player1.NameReturn()}: {player1.ResultingValueReturn()}  \t Общий счет: {game1.CountReturn()} \t Счет  {player2.NameReturn()}: {player2.ResultingValueReturn()}");
-                    }
+                    Console.WriteLine($"Игрок {game1.player1.NameReturn()}, выберете любое число от 1 до 10");
+                    string str = Console.ReadLine();                    
+                    game1.ValidationValue(Convert.ToInt32(str));
+                    game1.player1.AdvancedValue(Convert.ToInt32(str));
+                    game1.player1.ResultingValue(game1.CountReturn());
+                    game1.CountUpdate(game1.player1.ResultingValueReturn());
+                    game1.MovePlayer1Update(false);
                 }
                 else
                 {
-                    if (choice == 1)
+
+                    if (game1.GameBotsReturn() == true)
                     {
-                        Console.WriteLine("Компьютор выбрал число:" + game1.MoveComputer(computer1, player1));
-                        game1.CountUpdate(computer1.ResultingValueReturn());
-                        Console.WriteLine($"Счет  {player1.NameReturn()}: {player1.ResultingValueReturn()}  \t Общий счет: {game1.CountReturn()} \t Счет PC: {computer1.ResultingValueReturn()}");
-                        b = true;
+                        game1._player.ResultingValue(game1.CountReturn());
+                        Console.WriteLine("Компьютор выбрал число:" + game1._player.ResultingValueReturn());
                     }
                     else
-                    {
-                        if (game1.ChekReturn() == 0 || game1.CountReturn() == 1 )
-                        {
-                            Console.WriteLine("Введите ваше имя игрок 2");
-                            if(game1.PlayerNameValid(player1.NameReturn(),Console.ReadLine()) == true)
-                            {
-                                player2.NameAdd(Console.ReadLine());
-                            }
-                            else
-                            {
-                                Console.WriteLine("Неверный формат ,выполните перезапуск");
-                                return;
-                            }
-                        }
-                        Console.WriteLine($"Игрок {player2.NameReturn()}, выберете любое число от 1 до 10");
-                        string value = Console.ReadLine();
-                        if (game1.ValidationValue(value) != true)
-                        {
-                            Console.WriteLine("Неверный формат ,выполните перезапуск");
-                            return;
-                        }
-                        player2.ResultingValue(game1.ValueConvert(value));
-                        game1.CountUpdate(player2.ResultingValueReturn());
-                        Console.WriteLine($"Счет  {player1.NameReturn()}: {player1.ResultingValueReturn()}  \t Общий счет: {game1.CountReturn()} \t Счет  {player2.NameReturn()}: {player2.ResultingValueReturn()}");
-                        b = true;
+                    {                       
+                        Console.WriteLine($"Игрок {game1._player.NameReturn()}, выберете любое число от 1 до 10");
+                        string str = Console.ReadLine();
+                        game1.player1.AdvancedValue(Convert.ToInt32(str));
+                        game1.ValidationValue(Convert.ToInt32(str));
+                        game1.player1.ResultingValue(game1.CountReturn());
+
                     }
-                }             
+                    game1.CountUpdate(game1._player.ResultingValueReturn());
+                    game1.MovePlayer1Update(true);
+                }
+                Console.WriteLine($"Счет  {game1.player1.NameReturn()}: {game1.player1.ResultingValueReturn()}  \t Общий счет: {game1.CountReturn()} \t Счет  {game1._player.NameReturn()}: {game1._player.ResultingValueReturn()}");
                 if (game1.CountWins() == true)
                 {
-                    if (b == false)
+                    if (game1.MovePlayer1Return() == false)
                     {
-                        Console.WriteLine($"Победил {player1.NameReturn()}");
-                        return;
+                        Console.WriteLine($"Победил {game1.player1.NameReturn()}");
                     }
                     else
                     {
-                        if (choice == 1)
-                        {
-                            Console.WriteLine($"Победил PC");
-                            return;
-                        }
-                        else
-                        {
-                            Console.WriteLine($"Победил {player2.NameReturn()}");
-                            return;
-                        }
+                        Console.WriteLine($"Победил {game1._player.NameReturn()}");
                     }
                 }
-                game1.ChekApp();
             }
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            Console.WriteLine("Неверный формат ,выполните перезапуск");
+            Console.WriteLine(ex.Message);
         }
     }
 }

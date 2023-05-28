@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game100", "Game100Classes\G
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game100WinForms", "Game100WinForms\Game100WinForms.csproj", "{844E7B91-A6F3-4FD7-B8F7-50D711A0AC2F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit_Tests_Game100", "Unit_Tests_Game100\Unit_Tests_Game100.csproj", "{6037FB08-25BC-485E-B62D-A99764EF92F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{844E7B91-A6F3-4FD7-B8F7-50D711A0AC2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{844E7B91-A6F3-4FD7-B8F7-50D711A0AC2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{844E7B91-A6F3-4FD7-B8F7-50D711A0AC2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6037FB08-25BC-485E-B62D-A99764EF92F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6037FB08-25BC-485E-B62D-A99764EF92F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6037FB08-25BC-485E-B62D-A99764EF92F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6037FB08-25BC-485E-B62D-A99764EF92F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

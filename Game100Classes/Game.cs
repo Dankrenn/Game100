@@ -9,29 +9,74 @@ namespace Game100Classes
     public class Game
     {
         private int _count;
-        private int _chek;
-
+        private bool _move_player1;
+        private bool _gamebots;
+        public Player player1 = new Player();
+        public IPlayer _player;
         public Game()
         {
 
         }
-
-       public bool PlayerNameValid(string name1,string name2)
+        public void GameBots(string str)
         {
-            if ((name1 == name2) || name1 == "" || name2 == "")
+            if (str == "0")
             {
-                return false;
+                _gamebots = true;
             }
-            return true;
+            if(str == "1") 
+            {
+                _gamebots = false;
+            }
+            else
+            {
+                throw new Exception("Неверные входные параметры");
+            }
         }
-        public void ChekApp()
+        public bool GameBotsReturn()
         {
-            this._chek++;
+            return _gamebots;
+        }
+        public  void CreatePlayer()
+        {
+            if (_gamebots == false)
+            {
+                _player = new Player();
+            }
+            else { _player = new Computer(); }
         }
 
-        public int ChekReturn()
+        public void PlayersNameValid(Player player1)
         {
-            return this._chek;
+            string name1 = player1.NameReturn();
+            string name2 = _player.NameReturn();
+            if (name1 == name2)
+            {
+                throw new Exception("Ваши имена совпали");
+            }
+        }
+
+        public void MoveOrder()
+        {
+            Random rand = new Random();
+            int result = rand.Next(0, 2);
+            if (result == 0)
+            {
+              _move_player1 = true;
+            }
+            else
+            {
+              _move_player1 = false;
+            }
+        }
+
+        public bool MovePlayer1Return()
+        {
+            return _move_player1;
+        }
+        public void MovePlayer1Update(bool move_player1)
+        {
+            _move_player1 = move_player1;
+
         }
 
         public void CountUpdate(int n)
@@ -46,25 +91,7 @@ namespace Game100Classes
 
         public  bool CountWins()
         {
-            if (this._count == 100)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        public  int ValueConvert(string value)
-        {
-            int n = int.Parse(value);
-            return n;
-        }
-
-        public bool ValidationValue(string value)
-        {
-            int n = ValueConvert(value);
-            if (n >= 1 && n <= 10)
+            if (this._count >= 100)
             {
                 return true;
             }
@@ -74,24 +101,12 @@ namespace Game100Classes
             }
         }
 
-        public bool MoveOrder()
+        public void ValidationValue(int value)
         {
-            Random rand = new Random();
-            int result = rand.Next(0, 2);
-            if(result == 0)
+            if(value < 1 || value > 10)
             {
-                return true;
+                throw new Exception("Превышен диапозон значений");
             }
-            else
-            {
-                return false;
-            }
-        }
-
-        public int MoveComputer(Computer computer1,Player player1)
-        {
-            computer1.AdvancedValue(player1.ResultingValueReturn());
-            return computer1.ResultingValue(this.ChekReturn(), this.CountReturn());
         }
     }
 }

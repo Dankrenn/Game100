@@ -8,92 +8,92 @@ namespace Game100Classes
 {
     public class Computer : IPlayer
     {
-        private int _advanced_value;//Полученаемое от игрока  значение ,которое он обрабатывает 
-        private int _resulting_value;//Передаваемое  другому игроку значение которое он выбирает 
+        private string _name = "PC";
+        private int _resulting_value;
 
         public Computer()
         {
 
         }
-
-        // метод для записи получаемого от сорерника значения
-        public void AdvancedValue(int _advanced_value_playergame) 
+        
+        public void ResultingValue(int count)
         {
-            this._advanced_value = _advanced_value_playergame;
-        }
-
-        // ПК Метод созданный для  записи  значения которое мы передадим другому игроку
-        public  int  ResultingValue(int chek, int count)
-        {
-            int m = 0;
-            int n = this._advanced_value;
-            if (n == 0)
+            if(count < 0)
             {
-                m = 9;
-                return this._resulting_value = m;
+                throw new Exception("Общий счет не может быть отрицательным");
             }
-            if (chek == 1)
+            string str = Convert.ToString(count);
+            char[] ch = str.ToCharArray();
+            int[] a = new int[str.Length];
+            string b = null;
+            if (ch.Length == 2)
             {
-                if (n >= 1 && n <= 8)
-                {
-                    m = 10 - n - 1;
-                }
-                if (n == 9)
-                {
-                    m = 10;
-                }
-                if (n == 10)
-                {
-                    m = 9;
-                }
-                return this._resulting_value = m;
+                b = ch[1].ToString();
+                a[1] = int.Parse(b);
             }
-            if (count <= 79)
+            int n;
+            if (count == 0)
             {
-                if (n >= 1 && n <= 9)
-                {
-                    m = 10 - n;
-                }
-                if (n == 10)
-                {
-                    m = 10;
-                }
-                return this._resulting_value = m;
+                _resulting_value = 9;
+                return;
             }
-            if (count > 79 && count <= 89)
+            if (count <= 10)
             {
-                if (n >= 1 && n <= 9)
+                if (count >= 1 && count <= 8)
                 {
-                    m = 10 - n;
+                    _resulting_value = 10 - count - 1;
                 }
-                else
+                if (count == 9)
                 {
-                    m = 1;
+                    _resulting_value = 10;
                 }
-                return this._resulting_value = m;
-            }
-            if (count > 89)
-            {
-                if (n != 1)
+                if (count == 10)
                 {
-                    m = 11 - n;
+                    _resulting_value = 9;
                 }
-                else
-                {
-                    m = 10;
-                }
-                return this._resulting_value = m;
+                return;
             }
             else
             {
-                m = 0;
-                return this._resulting_value = m;
+                n = a[1];
+                if (count < 89)
+                {
+                    if(n > 0)
+                    {
+                        _resulting_value = 10 - n -1;
+                    }
+                    else
+                    {
+                        _resulting_value = 9;
+                    }
+                    return;
+                }
+                if (count >= 89)
+                {
+                   if(count == 89)
+                    {
+                        _resulting_value = 1;
+                    }
+                    else
+                    {
+                        _resulting_value = 100 - count;
+                    }
+                }
+                return;
             }
         }
-
+     
         public int ResultingValueReturn()
         {
             return this._resulting_value;
+        }
+        public void NameAdd(string name)
+        {
+
+        }
+        public string NameReturn()
+        {
+            return _name;
         }
     }
 }
