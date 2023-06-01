@@ -9,39 +9,26 @@ namespace Game100Classes
     public class Player : IPlayer
     {
         private string _name;
-        private int _advanced_value;
-        private int _resulting_value;
+        private int _step;
 
-        public Player()
+        public Player(string name)
         {
-         
-        }
-
-        public void AdvancedValue(int _advanced_value_playergame) 
-        {
-            this._advanced_value = _advanced_value_playergame;
-        }
-
-        public void ResultingValue(int count)  
-        {
-           this._resulting_value = _advanced_value;             
-        }
-       
-        public int ResultingValueReturn()
-        {
-            return this._resulting_value;
-        }     
-        public void NameAdd(string name)
-        {
-            if(name == null)
+            if (name == null || name == "")
             {
                 throw new ArgumentNullException("Введите свое имя");
-            }        
-             this._name = name;
+            }
+            this._name = name;
         }
-        public string NameReturn()
-        {         
-            return this._name;
+
+        public void SetStep(Game game)  
+        {
+            Console.WriteLine($"Игрок {GetName()}, выберете любое число от 1 до 10");
+            int step = int.Parse(Console.ReadLine());
+            game.ValidationValue(step);
+            this._step = step;  
         }
+       
+        public int GetStep() => _step;  
+        public string GetName() => _name;
     }
 }
