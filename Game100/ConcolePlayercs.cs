@@ -1,17 +1,18 @@
-﻿using System;
+﻿using Game100Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game100Classes
+namespace Game100Concole
 {
-    public class Player : IPlayer
+    public class ConcolePlayers : IPlayer
     {
         private string _name;
         private int _step;
 
-        public Player(string name)
+        public ConcolePlayers(string name)
         {
             if (name == null || name == "")
             {
@@ -20,7 +21,7 @@ namespace Game100Classes
             this._name = name;
         }
 
-        public void SetStep(Game game)  
+        public void SetStep(Game game)
         {
             Console.WriteLine($"Игрок {GetName()}, выберете любое число от 1 до 10");
             int step = int.Parse(Console.ReadLine());
@@ -29,8 +30,8 @@ namespace Game100Classes
             game.CountUpdate(step);
             game.SetMovePlayer1(game.GetMovePlayer1());
         }
-       
-        public int GetStep() => _step;  
+
+        public int GetStep() => _step;
         public string GetName() => _name;
     }
 }

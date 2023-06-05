@@ -8,9 +8,8 @@ namespace Game100Classes
 {
     public interface IPlayer
     {
-        void NameAdd(string name);
-        string NameReturn();
-        void ResultingValue(int count);
-        int ResultingValueReturn();
+        string GetName();
+        void SetStep(Game game1);
+        int GetStep();
     }
 }
