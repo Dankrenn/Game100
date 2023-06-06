@@ -6,42 +6,18 @@ using System.Threading.Tasks;
 
 namespace Game100Classes
 {
-    public class Player : IPlayer
+    public abstract class Player : IPlayer
     {
         private string _name;
-        private int _advanced_value;
-        private int _resulting_value;
 
-        public Player()
+        public Player(string name)
         {
-         
-        }
-
-        public void AdvancedValue(int _advanced_value_playergame) 
-        {
-            this._advanced_value = _advanced_value_playergame;
-        }
-
-        public void ResultingValue(int count)  
-        {
-           this._resulting_value = _advanced_value;             
-        }
-       
-        public int ResultingValueReturn()
-        {
-            return this._resulting_value;
-        }     
-        public void NameAdd(string name)
-        {
-            if(name == null)
-            {
+            if (name == null || name == "")
                 throw new ArgumentNullException("Введите свое имя");
-            }        
-             this._name = name;
+            this._name = name;
         }
-        public string NameReturn()
-        {         
-            return this._name;
-        }
+
+        public abstract void SetStep(Game game);     
+        public string GetName() => _name;
     }
 }

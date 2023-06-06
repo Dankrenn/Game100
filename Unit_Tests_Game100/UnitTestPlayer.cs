@@ -9,34 +9,39 @@ namespace Unit_Tests_Game100
     {
       
         [TestMethod]
-        public void NameAdd_Daniil_TrueReturned()
+        public void AddName_Daniil_TrueReturned()
         {
-            Player player = new Player();
+            ConcolePlayers player = new Player("Daniil");
             string expected = "Daniil";
-            string name = "Daniil";
-            player.NameAdd(name);
-            string actual = player.NameReturn();          
-            Assert.AreEqual(expected, actual , "входной параметр {0} ,результатом является {1}", name , expected);
+            string actual = player.GetName();          
+            Assert.AreEqual(expected, actual);
         }
 
         [ExpectedException(typeof(ArgumentNullException), "Строка не содержит значений")]
         [TestMethod]
         public void NameAdd_Null_Exception()
         {
-            Player player = new Player();
-            player.NameAdd(null);            
+            Player player = new Player("");           
         }
 
         [TestMethod]
-        public void ResultingValue_5_5Returned()
+        public void SetStep_5_5Returned()
         {
-            Game game = new Game();
-            Player player = new Player();
-            player.AdvancedValue(5);
-            player.ResultingValue(game.CountReturn());
+            Game game = new Game(true);
+            Player player = new Player("Daniil");
             int expected = 5;
-            int actual = player.ResultingValueReturn();
+            player.SetStep(game);
+            int actual =  player.GetStep(); 
             Assert.AreEqual(expected, actual, "входной параметр {0} ,результатом является {1}", 5, expected);
+        }
+
+        [ExpectedException(typeof(Exception), "Превышен диапозон значений")]
+        [TestMethod]
+        public void SetStep_11_Exception()
+        {
+            Game game = new Game(true);
+            Player player = new Player("Daniil");
+            player.SetStep(game);
         }
     }
 }

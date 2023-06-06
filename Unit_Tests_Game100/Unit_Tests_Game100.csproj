@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="UnitTestComputer.cs" />
+    <Compile Include="UnitTestGame.cs" />
     <Compile Include="UnitTestPlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -60,6 +61,10 @@
     <ProjectReference Include="..\Game100Classes\Game100.csproj">
       <Project>{dfa7646d-22bd-43ba-bb3d-8d0248075433}</Project>
       <Name>Game100</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Game100\Game100Concole.csproj">
+      <Project>{67140535-5329-4fbd-b29a-36d2ecb33e02}</Project>
+      <Name>Game100Concole</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

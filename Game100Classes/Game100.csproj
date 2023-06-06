@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Computer.cs" />
+    <Compile Include="IGame.cs" />
     <Compile Include="Iplayer.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Game.cs" />
