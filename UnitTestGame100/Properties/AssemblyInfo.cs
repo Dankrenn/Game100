@@ -2,18 +2,18 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Unit_Tests_Game100")]
+[assembly: AssemblyTitle("UnitTestGame100")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Unit_Tests_Game100")]
+[assembly: AssemblyProduct("UnitTestGame100")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 [assembly: ComVisible(false)]
 
-[assembly: Guid("6037fb08-25bc-485e-b62d-a99764ef92f6")]
+[assembly: Guid("1a29fab3-ac9c-4a7d-987b-870266042375")]
 
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
