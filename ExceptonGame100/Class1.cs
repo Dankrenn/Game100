@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game100Classes
+namespace ExceptonGame100
 {
-    public interface IPlayer
+    public class Class1
     {
-        string GetName();
-        void SetStep();
-        int GetStep();
     }
 }
