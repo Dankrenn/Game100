@@ -9,19 +9,15 @@ namespace Game100Classes
     public abstract class Player : IPlayer
     {
         private string _name;
-        private int _step;
-        private IGame _game;
 
-        public Player(string name, IGame game)
+        public Player(string name)
         {
             if (name == null || name == "")
                 throw new ArgumentNullException("Введите свое имя");
             this._name = name;
-            _game = game;
         }
 
-        public abstract void SetStep();
-        public abstract int GetStep();
+        public abstract void SetStep(Game game);     
         public string GetName() => _name;
     }
 }

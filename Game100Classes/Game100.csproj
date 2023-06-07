@@ -42,13 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Computer.cs" />
-    <Compile Include="ExceptionGame100\ExceptionComputer\NegativeScoreException.cs" />
-    <Compile Include="ExceptionGame100\ExceptionGame100.cs" />
-    <Compile Include="ExceptionGame100\ExceptionGame\AnotherUsersMoveException.cs" />
-    <Compile Include="ExceptionGame100\ExceptionGame\OutOfRangeException.cs" />
-    <Compile Include="ExceptionGame100\ExceptionGame\SameUsernamesException.cs" />
-    <Compile Include="ExceptionGame100\ExceptionCodes.cs" />
-    <Compile Include="ExceptionGame100\ExceptionGame\EmptyUsernameException.cs" />
     <Compile Include="IGame.cs" />
     <Compile Include="Iplayer.cs" />
     <Compile Include="Player.cs" />

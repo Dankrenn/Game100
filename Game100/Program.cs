@@ -1,5 +1,4 @@
 ﻿using Game100Classes;
-using Game100Classes.ExceptionGame100;
 using Game100Concole;
 
 class Program
@@ -22,29 +21,30 @@ class Program
             if(game1.GetGameBots())
             {
                 Console.WriteLine("Введите ваше имя игрок 1");
-                game1.CreatePlayer(new ConcolePlayers(Console.ReadLine(), game1));
+                game1.CreatePlayer(new ConcolePlayers(Console.ReadLine()));
             }
             else
             {
                 Console.WriteLine("Введите ваше имя игрок 1");
                 string name1 = Console.ReadLine();
                 Console.WriteLine("Введите ваше имя игрок 2");
-                game1.CreatePlayer(new ConcolePlayers(name1, game1),new ConcolePlayers(Console.ReadLine(), game1));
+                game1.CreatePlayer(new ConcolePlayers(name1),new ConcolePlayers(Console.ReadLine()));
             }
             game1.MoveOrder();
             while (game1.CountWins() == false)
             {
                 if(game1.GetMovePlayer1())
                 {
+
                     Console.WriteLine($"Ход игрока {game1.player1.GetName()}");
-                    game1.CountUpdate(game1.player1);
+                    game1.player1.SetStep(game1);
                 }
                 else
                 {
                     Console.WriteLine($"Ход игрока {game1.player2.GetName()}");
-                    game1.CountUpdate(game1.player2);
+                    game1.player2.SetStep(game1);
                 }
-                Console.WriteLine($"Счет  {game1.player1.GetName()}: {game1.player1.GetStep()}  \t Общий счет: {game1.GetCount()} \t Счет  {game1.player2.GetName()}: {game1.player2.GetStep()}");
+                Console.WriteLine($"Общий счет: {game1.GetCount()}");
                 if (game1.CountWins())
                 {
                     if (game1.GetMovePlayer1())
@@ -53,10 +53,6 @@ class Program
                         Console.WriteLine($"Победил {game1.player1.GetName()}");
                 }
             }
-        }
-        catch (ExceptionGame100 ex)
-        {
-            Console.WriteLine(ex.Code);
         }
         catch (Exception ex)
         {

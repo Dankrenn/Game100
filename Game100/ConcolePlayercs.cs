@@ -9,16 +9,15 @@ namespace Game100Concole
 {
     public class ConcolePlayers : Player
     {
-        public int _step;
-        public ConcolePlayers(string name, IGame game) : base(name, game)
+        public ConcolePlayers(string name) : base(name)
         {
         }
 
-        public override void SetStep()
+        public override void SetStep(Game game)
         {
             Console.WriteLine($"Игрок {GetName()}, выберете любое число от 1 до 10");
-            _step = int.Parse(Console.ReadLine());       
+            int step = int.Parse(Console.ReadLine());
+            game.CountUpdate(step);            
         }
-        public override int GetStep() => _step;
     }
 }

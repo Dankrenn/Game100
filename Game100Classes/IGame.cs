@@ -8,9 +8,7 @@ namespace Game100Classes
 {
     public interface IGame
     {
-        bool GetMovePlayer1();
-        int GetCount();
-        void CountUpdate(IPlayer player);
+        void CountUpdate(int move);
         void CreatePlayer(IPlayer name1, IPlayer name2);
         void CreatePlayer(IPlayer name1);
     }

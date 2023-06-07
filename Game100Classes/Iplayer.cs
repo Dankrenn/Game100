@@ -9,7 +9,6 @@ namespace Game100Classes
     public interface IPlayer
     {
         string GetName();
-        void SetStep();
-        int GetStep();
+        void SetStep(Game game1);
     }
 }

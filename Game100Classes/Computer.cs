@@ -1,20 +1,17 @@
-﻿using Game100Classes.ExceptionGame100.ExceptionComputer;
-using System;
+﻿using System;
 
 namespace Game100Classes
 {
     public class Computer : IPlayer
     {
         private const string _name = "PC";
-        private int _step;
-        private IGame _game;
-        public Computer(IGame game) { _game = game; }
+        public Computer() { }
         
-        public void SetStep()
+        public void SetStep(Game game1)
         {
-            int count = _game.GetCount();
+            int count = game1.GetCount();
             if(count < 0)
-                throw new NegativeScoreException();
+                throw new Exception("Общий счет не может быть отрицательным");
 
             char[] ch = Convert.ToString(count).ToCharArray();
             int[] a = new int[Convert.ToString(count).Length];
@@ -22,9 +19,10 @@ namespace Game100Classes
             {
                 a[i] = int.Parse(ch[i].ToString());
             }
+            int step = 0;
             if (count == 0)
             {
-                _step = 9;
+                step = 9;
             }
             int n;
             if (count < 89)
@@ -34,19 +32,19 @@ namespace Game100Classes
                 else
                     n = a[0];
                 if (n >= 1 && n <= 8)
-                    _step = 10 - n - 1;
+                    step = 10 - n - 1;
                 if (n == 9)
-                    _step = 10;
+                    step = 10;
                 if (n == 0)
-                    _step = 9;
+                    step = 9;
             }
             if (count == 89)
-                _step = 1;
+                step = 1;
             if (count > 89)
-                _step = 100 - count;
-        }
+                step = 100 - count;
 
-        public int GetStep() => _step;
+            game1.CountUpdate(step);
+        }
         public string GetName() => _name;
     }
 }

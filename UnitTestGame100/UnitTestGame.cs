@@ -1,102 +1,50 @@
 ﻿using Game100Classes;
-using Game100Classes.ExceptionGame100;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace UnitTestGame100
+namespace Unit_Tests_Game100
 {
     [TestClass]
     public class UnitTestGame
     {
-        Game game;
-        Mock<IPlayer> player1;
-        Mock<IPlayer> player2;
-
-        [TestInitialize]
-        public void TestInitialize()
+        [ExpectedException(typeof(Exception), "Вы ввели одинаковые имена")]
+        [TestMethod]
+        public void CreatePlayer_DaniilandDaniil_Exception()
         {
-            game = new Game(false);
-            player1 = new Mock<IPlayer>();
-            player2 = new Mock<IPlayer>();
-            player1.Setup(m => m.GetName()).Returns("Daniil");
-            player2.Setup(m => m.GetName()).Returns("Boris");
-            game.CreatePlayer(player1.Object, player2.Object);
+            IGame game = new Game(false);
+            game.CreatePlayer(new IPlayer("1"), new IPlayer("2"));
         }
 
         [TestMethod]
-        public void CreatePlayers_DaniilandBoris_Complite()
+        public void CreatePlayer_DaniilandBoris_TrueMetod()
         {
-            Assert.IsNotNull(game.player2.GetName());
-        }
-        [ExpectedException(typeof(SameUsernamesException))]
-        [TestMethod]
-        public void CreatePlayers_DaniilandDaniil_Exception()
-        {
-            player1.Setup(m => m.GetName()).Returns("Daniil");
-            player2.Setup(m => m.GetName()).Returns("Daniil");
-            game.CreatePlayer(player1.Object, player2.Object);
+            Game game = new Game(false);
+            game.CreatePlayer("Daniil", "Boris");
         }
 
-        [ExpectedException(typeof(EmptyUsernameException))]
+        [ExpectedException(typeof(ArgumentNullException), "Строка не содержит значений")]
         [TestMethod]
-        public void CreatePlayers_DaniilandEmpty_Exception()
+        public void CreatePlayer_DaniilandEmply_Exception()
         {
-            player1.Setup(m => m.GetName()).Returns("Daniil");
-            player2.Setup(m => m.GetName()).Returns("");
-            game.CreatePlayer(player1.Object, player2.Object);
+            Game game = new Game(false);
+            game.CreatePlayer("Daniil", "");
         }
 
-        [ExpectedException(typeof(EmptyUsernameException))]
+        [ExpectedException(typeof(Exception), "Превышен диапозон значений")]
         [TestMethod]
-        public void CreatePlayers_EmptyandDaniil_Exception()
+        public void ValidationValue_50_Exceptoin()
         {
-            player1.Setup(m => m.GetName()).Returns("");
-            player2.Setup(m => m.GetName()).Returns("Daniil");
-            game.CreatePlayer(player1.Object, player2.Object);
-        }
-        [ExpectedException(typeof(EmptyUsernameException))]
-        [TestMethod]
-        public void CreatePlayers_EmptyandEmpty_Exception()
-        {
-            player1 = new Mock<IPlayer>();
-            player2 = new Mock<IPlayer>();
-            player1.Setup(m => m.GetName()).Returns("");
-            player2.Setup(m => m.GetName()).Returns("");
-            game.CreatePlayer(player1.Object, player2.Object);
-        }
-
-        [ExpectedException(typeof(OutOfRangeException))]
-        [TestMethod]
-        public void SetStep_PlayerMove11_Exception()
-        {
-            player2.Setup(m => m.GetStep()).Returns(11);
-            game.CountUpdate(player2.Object);
-        }
-
-        [ExpectedException(typeof(OutOfRangeException))]
-        [TestMethod]
-        public void SetStep_PlayerMoveMin1_Exception()
-        {
-            player2.Setup(m => m.GetStep()).Returns(-1);
-            game.CountUpdate(player2.Object);
+            Game game = new Game(false);
+            game.ValidationValue(50);
         }
 
         [TestMethod]
-        public void SetStep_PlayerMove7_GetCount7()
+        public void ValidationValue_5_TrueMetod()
         {
-            int exception = 7;
-            player2.Setup(m => m.GetStep()).Returns(7);
-            game.CountUpdate(player2.Object);
-            int actual = game.GetCount();
-            Assert.AreEqual(actual, exception);
-        }
-
-        [ExpectedException(typeof(AnotherUsersMoveException))]
-        [TestMethod]
-        public void SetStep_Player1Move_Exception()
-        {
-            player1.Setup(m => m.GetStep()).Returns(7);
-            game.CountUpdate(player1.Object);
+            Game game = new Game(false);
+            game.ValidationValue(5);
         }
     }
 }

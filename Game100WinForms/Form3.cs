@@ -49,7 +49,7 @@ namespace Game100WinForms
             {
                 if (form2.game.GetGameBots())
                 {
-                    form2.game.CountUpdate(form2.game.player2);
+                    form2.game.player2.SetStep(form2.game);
                     this.Hide();
                     if (form2.game.CountWins())
                     {
@@ -75,10 +75,7 @@ namespace Game100WinForms
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            if(form2.game.GetMovePlayer1())
-                form2.game.CountUpdate(form2.game.player1);
-            else
-                form2.game.CountUpdate(form2.game.player2);
+            form2.game.CountUpdate(MovePlayer());
             this.Hide();
             new Form3(form2,form1).ShowDialog();
         }
