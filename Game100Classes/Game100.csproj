@@ -41,11 +41,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Computer.cs" />
-    <Compile Include="Iplayer.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="Game.cs" />
+    <Compile Include="Classes\Computer.cs" />
+    <Compile Include="ExceptionGame100\ExceptionComputer\NegativeScoreException.cs" />
+    <Compile Include="ExceptionGame100\ExceptionGame100.cs" />
+    <Compile Include="ExceptionGame100\ExceptionGame\AnotherUsersMoveException.cs" />
+    <Compile Include="ExceptionGame100\ExceptionGame\OutOfRangeException.cs" />
+    <Compile Include="ExceptionGame100\ExceptionGame\SameUsernamesException.cs" />
+    <Compile Include="ExceptionGame100\ExceptionCodes.cs" />
+    <Compile Include="ExceptionGame100\ExceptionGame\EmptyUsernameException.cs" />
+    <Compile Include="Classes\IGame.cs" />
+    <Compile Include="Classes\Iplayer.cs" />
+    <Compile Include="Classes\Player.cs" />
+    <Compile Include="Classes\Game.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ExceptionGame100\ResourceCodeException.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceCodeException.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ExceptionGame100\ResourceCodeException.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceCodeException.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
